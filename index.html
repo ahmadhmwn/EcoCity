@@ -144,141 +144,154 @@
         .objective-toggle { background:linear-gradient(135deg,rgba(42,157,143,0.95),rgba(33,136,121,0.95)); color:#fff; border:1px solid rgba(78,204,163,0.6); padding:6px 12px; border-radius:50px; font-size:12px; font-weight:700; cursor:pointer; }
         .objective-panel { margin-top:6px; width:320px; background:rgba(10,22,40,0.96); border:1px solid rgba(78,204,163,0.4); border-radius:10px; padding:10px; display:none; max-height:70vh; overflow-y:auto; }
         .objective-panel.open { display:block; }
-        .bottom-bar { flex-shrink:0; background:linear-gradient(180deg,rgba(10,20,40,0.95),rgba(15,30,60,0.9)); border-top:1px solid rgba(130,182,197,0.2); padding:8px 16px; display:flex; align-items:center; gap:12px; justify-content:center; flex-wrap:wrap; }
-        .resource-chips { display:flex; gap:6px; flex-wrap:wrap; }
-        .resource-chip { display:flex; align-items:center; gap:4px; color:#dce9f1; font-size:11px; padding:4px 10px; background:rgba(5,16,32,0.5); border-radius:20px; border:1px solid rgba(130,182,197,0.15); }
+        
+        /* ============================================ */
+        /* COMPACT BOTTOM BAR - dengan toggle tersembunyi */
+        /* ============================================ */
+        .bottom-bar {
+            flex-shrink: 0;
+            background: linear-gradient(180deg, rgba(10,20,40,0.98), rgba(15,30,60,0.95));
+            border-top: 1px solid rgba(130,182,197,0.2);
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .resource-chips {
+            display: flex;
+            gap: 4px;
+            flex-wrap: nowrap;
+            flex-shrink: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            max-width: 100%;
+            flex: 1;
+        }
+        .resource-chips::-webkit-scrollbar { display: none; }
+        .resource-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            color: #dce9f1;
+            font-size: 10px;
+            padding: 4px 8px;
+            background: rgba(5,16,32,0.5);
+            border-radius: 14px;
+            border: 1px solid rgba(130,182,197,0.15);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
         .resource-chip.debt-chip { border-color:#e94560; background:rgba(233,69,96,0.15); color:#ff8a9a; }
         .resource-chip.disaster-chip { border-color:#ff8c42; background:rgba(255,140,66,0.18); color:#ffb088; }
         .resource-chip.food-chip { border-color:#a3e635; background:rgba(163,230,53,0.15); color:#c4f06a; }
         .resource-chip.npc-chip { border-color:#c084fc; background:rgba(192,132,252,0.15); color:#d8b4fe; }
-        
-        /* ===== NEW ACTION MENU STYLES ===== */
-        .action-menu {
+
+        /* Tombol toggle untuk show/hide action menu */
+        .action-menu-toggle {
             display: flex;
             align-items: center;
-            gap: 6px;
-            flex: 1;
             justify-content: center;
-            flex-wrap: wrap;
-            padding: 4px 0;
-        }
-        
-        .action-category {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .category-toggle {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            background: linear-gradient(135deg, rgba(42,157,143,0.2), rgba(33,136,121,0.15));
-            border: 1px solid rgba(130,182,197,0.3);
-            border-radius: 8px;
-            color: #4ecca3;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
-            min-width: 120px;
-            justify-content: center;
-        }
-        
-        .category-toggle:hover {
-            background: linear-gradient(135deg, rgba(42,157,143,0.4), rgba(33,136,121,0.3));
-            border-color: #4ecca3;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(42,157,143,0.2);
-        }
-        
-        .category-toggle[aria-expanded="false"] {
-            background: linear-gradient(135deg, rgba(130,182,197,0.15), rgba(100,150,170,0.1));
-            border-color: rgba(130,182,197,0.2);
-            color: #a8b8c8;
-        }
-        
-        .category-toggle[aria-expanded="false"]:hover {
-            background: linear-gradient(135deg, rgba(130,182,197,0.25), rgba(100,150,170,0.2));
-            border-color: #82b6c5;
-            color: #fff;
-        }
-        
-        .category-chevron {
-            font-size: 10px;
-            transition: transform 0.2s;
-        }
-        
-        .category-toggle[aria-expanded="true"] .category-chevron {
-            transform: rotate(0deg);
-        }
-        
-        .category-toggle[aria-expanded="false"] .category-chevron {
-            transform: rotate(-90deg);
-        }
-        
-        .category-content {
-            display: flex;
-            gap: 6px;
-            margin-top: 6px;
-            padding: 4px 2px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .category-content button.btn {
+            gap: 4px;
             padding: 6px 12px;
-            font-size: 11px;
-            min-width: 80px;
-        }
-        
-        .menu-collapse-btn {
-            display: none;
-            width: 36px;
-            height: 36px;
+            background: linear-gradient(135deg, #2a9d8f, #218879);
+            border: 1px solid rgba(78,204,163,0.6);
             border-radius: 8px;
-            background: linear-gradient(135deg, rgba(42,157,143,0.9), rgba(33,136,121,0.9));
-            border: 1px solid rgba(78,204,163,0.5);
             color: #fff;
+            font-size: 12px;
+            font-weight: 700;
             cursor: pointer;
-            font-size: 14px;
-            align-items: center;
-            justify-content: center;
-            margin-left: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
             transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(42,157,143,0.3);
         }
-        
-        .menu-collapse-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 16px rgba(42,157,143,0.4);
+        .action-menu-toggle:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(42,157,143,0.5);
         }
-        
-        .menu-collapse-btn .collapse-icon {
-            transition: transform 0.2s;
+        .action-menu-toggle.active {
+            background: linear-gradient(135deg, #e94560, #c73650);
+            border-color: #ff8a9a;
+            box-shadow: 0 4px 12px rgba(233,69,96,0.4);
         }
-        
-        .action-menu.collapsed .menu-collapse-btn .collapse-icon {
+        .action-menu-toggle .toggle-icon {
+            transition: transform 0.3s;
+            font-size: 14px;
+        }
+        .action-menu-toggle.active .toggle-icon {
             transform: rotate(180deg);
         }
-        
-        /* Reset button in header */
-        .header-btn.reset-btn {
-            background: linear-gradient(135deg, rgba(233,69,96,0.2), rgba(199,54,80,0.15)) !important;
-            border-color: rgba(233,69,96,0.4) !important;
-            color: #ff8a9a !important;
+
+        /* Action menu - panel yang muncul dari bawah */
+        .action-menu-panel {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(10,22,40,0.98), rgba(15,30,60,0.95));
+            border-top: 2px solid rgba(78,204,163,0.5);
+            padding: 8px 10px;
+            display: none;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            align-items: flex-start;
+            box-shadow: 0 -8px 24px rgba(0,0,0,0.6);
+            animation: slideUp 0.25s ease;
+            z-index: 50;
         }
-        
-        .header-btn.reset-btn:hover {
-            background: linear-gradient(135deg, rgba(233,69,96,0.4), rgba(199,54,80,0.3)) !important;
-            border-color: #e94560 !important;
-            color: #fff !important;
-            box-shadow: 0 4px 16px rgba(233,69,96,0.3);
+        .action-menu-panel.open {
+            display: flex;
         }
-        
-        .actions { display:flex; gap:8px; flex-wrap:wrap; }
-        .btn { padding:8px 16px; border:1px solid rgba(255,255,255,0.12); border-radius:8px; font-weight:700; cursor:pointer; font-size:12px; color:#fff; transition:all 0.15s; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .action-category {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 6px 8px;
+            background: rgba(5,12,24,0.5);
+            border: 1px solid rgba(130,182,197,0.15);
+            border-radius: 8px;
+            min-width: 130px;
+        }
+        .category-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: #4ecca3;
+            text-align: center;
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(130,182,197,0.15);
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+        .category-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        /* Buttons - compact */
+        .btn { 
+            padding:6px 10px; 
+            border:1px solid rgba(255,255,255,0.12); 
+            border-radius:6px; 
+            font-weight:700; 
+            cursor:pointer; 
+            font-size:10px; 
+            color:#fff; 
+            transition:all 0.15s;
+            white-space: nowrap;
+            text-align: left;
+        }
         .btn:hover:not(:disabled) { transform:translateY(-1px); filter:brightness(1.1); }
         .btn-collect { background:linear-gradient(135deg,#2a9d8f,#218879); }
         .btn-craft { background:linear-gradient(135deg,#e77a53,#ca5b45); }
@@ -294,6 +307,7 @@
         .btn-bridge { background:linear-gradient(135deg,#78716c,#57534e); }
         @keyframes quizGlow { 0%,100% { box-shadow:0 0 8px rgba(249,199,79,0.5); } 50% { box-shadow:0 0 20px rgba(249,199,79,0.9); } }
         .btn-loan { background:linear-gradient(135deg,#c73650,#8b1f33); }
+
         .modal-overlay { position:absolute; inset:0; background:rgba(4,12,24,0.85); display:none; justify-content:center; align-items:center; z-index:100; backdrop-filter:blur(8px); }
         .modal-overlay.active { display:flex; }
         .modal { background:linear-gradient(145deg,#1a2a43,#101a2c); padding:24px; border-radius:14px; max-width:520px; text-align:center; border:1px solid rgba(233,69,96,0.6); max-height:90vh; overflow-y:auto; }
@@ -415,7 +429,6 @@
         .quality-toggle:hover { color:#4ecca3; }
         .quality-btn { padding:6px 12px; background:linear-gradient(135deg,#2a9d8f,#218879); border:none; border-radius:6px; color:#fff; font-weight:700; font-size:11px; cursor:pointer; margin-top:8px; width:100%; }
         
-        /* ✅ NPC activity log */
         .npc-activity-feed { position:absolute; top:60px; left:10px; z-index:25; width:280px; max-height:200px; overflow-y:auto; background:rgba(10,22,40,0.92); border:1px solid rgba(192,132,252,0.4); border-radius:10px; padding:8px; display:flex; flex-direction:column; gap:3px; }
         .npc-activity-feed h6 { color:#c084fc; font-size:10px; margin-bottom:4px; font-weight:700; }
         .npc-activity-item { font-size:10px; color:#dce9f1; padding:3px 6px; background:rgba(5,12,24,0.5); border-radius:4px; border-left:2px solid #c084fc; }
@@ -424,32 +437,17 @@
             .sidebar { position:absolute; right:0; top:0; bottom:0; z-index:50; }
             .sidebar.collapsed { width:0; }
             .npc-activity-feed { display:none; }
+            .action-category { min-width: 110px; }
         }
         
-        @media (max-width: 768px) {
-            .category-toggle {
-                min-width: 100px;
-                padding: 6px 10px;
-                font-size: 11px;
-            }
-            .category-label { display: none; }
-            .category-content button.btn {
-                min-width: 70px;
-                padding: 5px 8px;
-                font-size: 10px;
-            }
-            .action-menu { gap: 4px; }
-            .menu-collapse-btn { display: flex !important; }
-        }
-        
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .header-btn { padding: 4px 6px; font-size: 10px; }
             .header-btn span { display: none; }
             .user-badge { display: none; }
             .title { font-size: 14px; }
-            .action-category { flex: 1; }
-            .category-toggle { min-width: auto; padding: 6px 8px; }
-            .category-icon { font-size: 14px; }
+            .action-category { min-width: 90px; padding: 4px 6px; }
+            .category-title { font-size: 9px; }
+            .btn { font-size: 9px; padding: 5px 8px; }
         }
     </style>
 </head>
@@ -500,7 +498,6 @@
                     <button class="quality-btn" id="btnQualityClose">Tutup</button>
                 </div>
                 
-                <!-- ✅ NPC activity feed -->
                 <div class="npc-activity-feed" id="npcActivityFeed">
                     <h6>👥 AKTIVITAS WARGA</h6>
                 </div>
@@ -592,31 +589,33 @@
             </aside>
         </div>
 
+        <!-- ============================================ -->
+        <!-- BOTTOM BAR dengan ACTION MENU yang bisa di-hide -->
+        <!-- ============================================ -->
         <div class="bottom-bar">
             <div class="resource-chips" id="resourceChips"></div>
             
-            <!-- Collapsible Action Menu -->
-            <div class="action-menu" id="actionMenu">
+            <button class="action-menu-toggle" id="btnActionMenuToggle" title="Tampilkan/Sembunyikan menu aksi">
+                <span class="toggle-icon">▲</span>
+                <span>⚡ Aksi</span>
+            </button>
+
+            <!-- Action Menu Panel (tersembunyi secara default) -->
+            <div class="action-menu-panel" id="actionMenuPanel">
+                <!-- Kategori: Sumber Daya -->
                 <div class="action-category">
-                    <button class="category-toggle" data-category="resources" aria-expanded="true">
-                        <span class="category-icon">⛏️</span>
-                        <span class="category-label">Sumber Daya</span>
-                        <span class="category-chevron">▼</span>
-                    </button>
-                    <div class="category-content" id="cat-resources">
+                    <div class="category-title">⛏️ SUMBER DAYA</div>
+                    <div class="category-buttons">
                         <button class="btn btn-collect" id="btnCollect" title="Kumpulkan kayu & logam">⛏️ Kumpulkan</button>
                         <button class="btn btn-plant" id="btnPlant" title="Tanam pohon untuk mengurangi polusi">🌳 Tanam Pohon</button>
                         <button class="btn btn-clean" id="btnClean" title="Bersihkan polusi kota">🧹 Bersihkan</button>
                     </div>
                 </div>
                 
+                <!-- Kategori: Bangunan -->
                 <div class="action-category">
-                    <button class="category-toggle" data-category="building" aria-expanded="true">
-                        <span class="category-icon">🏗️</span>
-                        <span class="category-label">Bangunan</span>
-                        <span class="category-chevron">▼</span>
-                    </button>
-                    <div class="category-content" id="cat-building">
+                    <div class="category-title">🏗️ BANGUNAN</div>
+                    <div class="category-buttons">
                         <button class="btn btn-farm" id="btnFarm" title="Bangun ladang ($50)">🌾 Pertanian</button>
                         <button class="btn btn-orchard" id="btnOrchard" title="Bangun kebun ($70)">🌳 Perkebunan</button>
                         <button class="btn btn-fish" id="btnFish" title="Bangun kolam ikan ($60)">🐟 Perikanan</button>
@@ -624,33 +623,23 @@
                     </div>
                 </div>
                 
+                <!-- Kategori: Kota -->
                 <div class="action-category">
-                    <button class="category-toggle" data-category="city" aria-expanded="false">
-                        <span class="category-icon">🏙️</span>
-                        <span class="category-label">Kota</span>
-                        <span class="category-chevron">▶</span>
-                    </button>
-                    <div class="category-content" id="cat-city" style="display: none;">
+                    <div class="category-title">🏙️ KOTA</div>
+                    <div class="category-buttons">
                         <button class="btn btn-trade" id="btnTrade" title="Berdagang dengan kota lain">🚢 Dagang</button>
                         <button class="btn btn-heal" id="btnHeal" title="Obati warga ($40)">💊 Obati</button>
                     </div>
                 </div>
                 
+                <!-- Kategori: Khusus -->
                 <div class="action-category">
-                    <button class="category-toggle" data-category="special" aria-expanded="false">
-                        <span class="category-icon">⭐</span>
-                        <span class="category-label">Khusus</span>
-                        <span class="category-chevron">▶</span>
-                    </button>
-                    <div class="category-content" id="cat-special" style="display: none;">
+                    <div class="category-title">⭐ KHUSUS</div>
+                    <div class="category-buttons">
                         <button class="btn btn-quiz" id="btnQuiz" title="Kerjakan kuis edukasi">📚 Quiz</button>
                         <button class="btn btn-disaster" id="btnDisaster" title="Mitigasi bencana aktif">🛡️ Mitigasi</button>
                     </div>
                 </div>
-                
-                <button class="menu-collapse-btn" id="menuCollapseBtn" title="Sembunyikan/ tampilkan menu" aria-label="Toggle menu">
-                    <span class="collapse-icon">◀</span>
-                </button>
             </div>
         </div>
 
@@ -674,6 +663,7 @@
                 <p>6️⃣ Atur <span class="tip">Pajak</span> & kebijakan untuk keseimbangan!</p>
                 <p style="color:#ff6b35;">🔥 <span class="tip">AWAS BENCANA ALAM!</span></p>
                 <p style="color:#4ecca3;">🖱️ Klik objek di dunia 3D untuk info!</p>
+                <p style="color:#f9c74f;">⚡ Klik tombol <strong>⚡ Aksi</strong> di bawah untuk menu!</p>
                 <button class="login-btn" id="btnStartTutorial" style="margin-top:14px;">✅ Siap, Mulai!</button>
             </div>
         </div>
@@ -705,7 +695,6 @@
     let currentUser = null;
     let isPaused = false;
 
-    // ✅ UNIFIED DIFFICULTY (tanpa tingkatan)
     const GAME_CONFIG = {
         pollutionPerTurn: 2,
         startMoney: 80,
@@ -734,7 +723,6 @@
         { q:'Mengapa perikanan penting bagi kota?', options:['Sumber protein & ekonomi','Menyebabkan polusi','Menghabiskan air','Merusak ekosistem'], correct:0, explain:'Perikanan menyediakan protein & ekonomi.' }
     ];
 
-    // STATE
     const state = {
         money:80, wood:0, metal:0, cleanWater:0, food:50,
         health:100, pollution:0, hasAirFilter:false,
@@ -760,7 +748,6 @@
         farmCount: 0, orchardCount: 0, fishPondCount: 0,
         hasIrrigation: false, hasGreenhouse: false, hasFishHatchery: false, hasOrganicFarm: false,
         _foodShortageLogged: false,
-        // ✅ NEW: Bridges & NPC
         bridges: [],
         bridgeCount: 0,
         npcActions: [],
@@ -768,10 +755,8 @@
         npcTreesPlanted: 0,
         npcFiresStarted: 0,
         npcBridgesBuilt: 0,
-        // ✅ NEW: environmental balance
         forestHealth: 100,
         treeCount: 0,
-        // ✅ RESET: World state variables
         initialBridgeCount: 0,
         initialMoney: 150,
         initialWood: 12,
@@ -909,7 +894,6 @@
         { id:'locust', name:'Belalang', icon:'🦗', severity:22, cost:{pesticide:60, predator:100}, description:'Belalang memakan tanaman!', effects:{health:-5, happiness:-12, trees:-8, food:-20} }
     ];
 
-    // DOM
     const $ = (id) => document.getElementById(id);
     const statsContainer = $('statsContainer');
     const notificationContainer = $('notificationContainer');
@@ -939,7 +923,6 @@
     const timeText = $('timeText');
     const npcActivityFeed = $('npcActivityFeed');
 
-    // LOGIN
     $('btnLogin').addEventListener('click', () => {
         const username = $('usernameInput').value.trim();
         if (!username) { alert('Tulis namamu! 😊'); return; }
@@ -969,7 +952,6 @@
         renderFarmPanel();
     }
 
-    // SAVE/LOAD
     function saveToLocalStorage() {
         if (!currentUser) return;
         try { localStorage.setItem(`ecocity_save_${currentUser}`, JSON.stringify({ username: currentUser, state })); } catch(e) {}
@@ -996,7 +978,6 @@
         reader.readAsText(file);
     });
 
-    // QUALITY
     function setupQualityListeners() {
         $('btnQuality').onclick = () => { $('qualityPanel').classList.toggle('show'); };
         $('btnQualityClose').onclick = () => $('qualityPanel').classList.remove('show');
@@ -1020,13 +1001,60 @@
         if (fireflyParticles) fireflyParticles.visible = visualQuality.dust;
     }
 
-    // SIDEBAR
     let sidebarOpen = true;
     $('btnSidebarToggle').addEventListener('click', () => {
         sidebarOpen = !sidebarOpen;
         sidebar.classList.toggle('collapsed', !sidebarOpen);
         setTimeout(onWindowResize, 350);
     });
+
+    // ============================================================
+    // ACTION MENU TOGGLE - Show/Hide seperti sidebar
+    // ============================================================
+    const actionMenuPanel = $('actionMenuPanel');
+    const btnActionMenuToggle = $('btnActionMenuToggle');
+    let actionMenuOpen = false;
+
+    btnActionMenuToggle.addEventListener('click', () => {
+        actionMenuOpen = !actionMenuOpen;
+        actionMenuPanel.classList.toggle('open', actionMenuOpen);
+        btnActionMenuToggle.classList.toggle('active', actionMenuOpen);
+        const icon = btnActionMenuToggle.querySelector('.toggle-icon');
+        icon.textContent = actionMenuOpen ? '▼' : '▲';
+    });
+
+    // Tutup menu saat klik tombol aksi
+    actionMenuPanel.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') {
+            setTimeout(() => {
+                actionMenuOpen = false;
+                actionMenuPanel.classList.remove('open');
+                btnActionMenuToggle.classList.remove('active');
+                btnActionMenuToggle.querySelector('.toggle-icon').textContent = '▲';
+            }, 100);
+        }
+    });
+
+    // Tutup menu saat klik di luar
+    document.addEventListener('click', (e) => {
+        if (actionMenuOpen && 
+            !e.target.closest('#actionMenuPanel') && 
+            !e.target.closest('#btnActionMenuToggle')) {
+            actionMenuOpen = false;
+            actionMenuPanel.classList.remove('open');
+            btnActionMenuToggle.classList.remove('active');
+            btnActionMenuToggle.querySelector('.toggle-icon').textContent = '▲';
+        }
+    });
+
+    $('btnResetGame').addEventListener('click', () => {
+        if (confirm('⚠️ YAKIN ingin reset game ke awal? Semua progres akan HILANG!')) {
+            if (confirm('Ini TIDAK bisa dibatalkan. Lanjutkan?')) {
+                resetGame();
+            }
+        }
+    });
+
     document.querySelectorAll('.sidebar-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.sidebar-tab').forEach(t => t.classList.remove('active'));
@@ -1101,11 +1129,8 @@
     let treeVariants = ['pine', 'oak', 'palm', 'bamboo'];
     let farmPlots = [], orchardTrees = [], fishPonds = [], bridges = [];
     let occupiedPositions = [];
-    
-    // ✅ NEW: NPC, Animals
     let npcWorkers = [];
     let forestAnimals = [];
-    
     let riverWaves = null;
 
     function isPositionFree(x, z, minDist = 6) {
@@ -1220,9 +1245,6 @@
         }
     }
 
-    // ============================================================
-    // ✅ SKY, LIGHTS, GROUND, RIVER
-    // ============================================================
     function setupSky() {
         const sunGeo = new THREE.SphereGeometry(7, 24, 24);
         const sunMat = new THREE.MeshBasicMaterial({ color: 0xffdd44 });
@@ -1389,9 +1411,6 @@
         }
     }
 
-    // ============================================================
-    // ✅ FOREST dengan POHON BERAGAM
-    // ============================================================
     function setupForest() {
         const forestClusters = [
             { cx: -90, cz: -60, count: 25, radius: 28 },
@@ -1609,11 +1628,7 @@
         scene.add(fireflyParticles);
     }
 
-    // ============================================================
-    // ✅ HEWAN HUTAN (deer, rabbit, boar, owl)
-    // ============================================================
     function setupForestAnimals() {
-        // Rusa (deer)
         for (let i = 0; i < 4; i++) {
             const deer = createDeer();
             const x = -80 + Math.random() * 160;
@@ -1629,7 +1644,6 @@
                 phase: Math.random() * Math.PI * 2
             });
         }
-        // Kelinci (rabbit)
         for (let i = 0; i < 8; i++) {
             const rabbit = createRabbit();
             const x = -80 + Math.random() * 160;
@@ -1646,7 +1660,6 @@
                 hopPhase: Math.random() * Math.PI * 2
             });
         }
-        // Babi hutan (boar)
         for (let i = 0; i < 3; i++) {
             const boar = createBoar();
             const x = -70 + Math.random() * 140;
@@ -1662,7 +1675,6 @@
                 phase: Math.random() * Math.PI * 2
             });
         }
-        // Burung hantu (owl) - di pohon
         for (let i = 0; i < 3; i++) {
             const owl = createOwl();
             const x = -60 + Math.random() * 120;
@@ -1683,51 +1695,28 @@
         const group = new THREE.Group();
         const brownMat = new THREE.MeshStandardMaterial({ color: 0x8a5a2a, roughness: 0.8 });
         const darkMat = new THREE.MeshStandardMaterial({ color: 0x5a3a1a, roughness: 0.8 });
-        
         const body = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.9, 0.7), brownMat);
-        body.position.y = 1.4;
-        body.castShadow = true;
-        group.add(body);
-        
+        body.position.y = 1.4; body.castShadow = true; group.add(body);
         const head = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.7, 0.6), brownMat);
-        head.position.set(0.9, 1.9, 0);
-        head.castShadow = true;
-        group.add(head);
-        
-        // Leher
+        head.position.set(0.9, 1.9, 0); head.castShadow = true; group.add(head);
         const neck = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.7, 0.4), brownMat);
-        neck.position.set(0.5, 1.7, 0);
-        group.add(neck);
-        
-        // Telinga
+        neck.position.set(0.5, 1.7, 0); group.add(neck);
         for (let i = 0; i < 2; i++) {
             const ear = new THREE.Mesh(new THREE.ConeGeometry(0.15, 0.4, 4), brownMat);
-            ear.position.set(0.9, 2.3, -0.2 + i * 0.4);
-            ear.rotation.z = -0.2;
-            group.add(ear);
+            ear.position.set(0.9, 2.3, -0.2 + i * 0.4); ear.rotation.z = -0.2; group.add(ear);
         }
-        
-        // Kaki
         for (let i = 0; i < 4; i++) {
             const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 1, 5), darkMat);
             leg.position.set(-0.6 + (i % 2) * 1.2, 0.5, -0.25 + Math.floor(i / 2) * 0.5);
-            leg.castShadow = true;
-            group.add(leg);
+            leg.castShadow = true; group.add(leg);
         }
-        
-        // Tanduk
         for (let i = 0; i < 2; i++) {
             const antler = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.8, 4), darkMat);
             antler.position.set(0.9, 2.5, -0.15 + i * 0.3);
-            antler.rotation.z = i === 0 ? 0.3 : -0.3;
-            group.add(antler);
+            antler.rotation.z = i === 0 ? 0.3 : -0.3; group.add(antler);
         }
-        
-        // Ekor
         const tail = new THREE.Mesh(new THREE.SphereGeometry(0.12, 6, 6), brownMat);
-        tail.position.set(-0.85, 1.5, 0);
-        group.add(tail);
-        
+        tail.position.set(-0.85, 1.5, 0); group.add(tail);
         group.userData.isAnimal = true;
         group.userData.animalType = 'deer';
         return group;
@@ -1736,37 +1725,18 @@
     function createRabbit() {
         const group = new THREE.Group();
         const whiteMat = new THREE.MeshStandardMaterial({ color: 0xd8c8a8, roughness: 0.9 });
-        const pinkMat = new THREE.MeshStandardMaterial({ color: 0xffaaa0 });
-        
         const body = new THREE.Mesh(new THREE.SphereGeometry(0.35, 8, 8), whiteMat);
-        body.position.y = 0.35;
-        body.scale.set(1, 0.85, 1.1);
-        body.castShadow = true;
-        group.add(body);
-        
+        body.position.y = 0.35; body.scale.set(1, 0.85, 1.1); body.castShadow = true; group.add(body);
         const head = new THREE.Mesh(new THREE.SphereGeometry(0.25, 8, 8), whiteMat);
-        head.position.set(0.3, 0.55, 0);
-        head.castShadow = true;
-        group.add(head);
-        
-        // Telinga panjang
+        head.position.set(0.3, 0.55, 0); head.castShadow = true; group.add(head);
         for (let i = 0; i < 2; i++) {
             const ear = new THREE.Mesh(new THREE.ConeGeometry(0.08, 0.5, 4), whiteMat);
-            ear.position.set(0.25, 0.85, -0.1 + i * 0.2);
-            ear.rotation.z = -0.15;
-            group.add(ear);
+            ear.position.set(0.25, 0.85, -0.1 + i * 0.2); ear.rotation.z = -0.15; group.add(ear);
         }
-        
-        // Mata
         const eye = new THREE.Mesh(new THREE.SphereGeometry(0.04, 6, 6), new THREE.MeshBasicMaterial({ color: 0x000000 }));
-        eye.position.set(0.5, 0.6, 0.15);
-        group.add(eye);
-        
-        // Ekor
+        eye.position.set(0.5, 0.6, 0.15); group.add(eye);
         const tail = new THREE.Mesh(new THREE.SphereGeometry(0.1, 6, 6), new THREE.MeshBasicMaterial({ color: 0xffffff }));
-        tail.position.set(-0.35, 0.35, 0);
-        group.add(tail);
-        
+        tail.position.set(-0.35, 0.35, 0); group.add(tail);
         group.userData.isAnimal = true;
         group.userData.animalType = 'rabbit';
         return group;
@@ -1775,38 +1745,21 @@
     function createBoar() {
         const group = new THREE.Group();
         const brownMat = new THREE.MeshStandardMaterial({ color: 0x4a3520, roughness: 0.95 });
-        
         const body = new THREE.Mesh(new THREE.BoxGeometry(1.3, 0.8, 0.8), brownMat);
-        body.position.y = 0.7;
-        body.castShadow = true;
-        group.add(body);
-        
+        body.position.y = 0.7; body.castShadow = true; group.add(body);
         const head = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.6, 0.5), brownMat);
-        head.position.set(0.8, 0.75, 0);
-        head.castShadow = true;
-        group.add(head);
-        
-        // Moncong
+        head.position.set(0.8, 0.75, 0); head.castShadow = true; group.add(head);
         const snout = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.25, 0.3), brownMat);
-        snout.position.set(1.15, 0.65, 0);
-        group.add(snout);
-        
-        // Taring
+        snout.position.set(1.15, 0.65, 0); group.add(snout);
         for (let i = 0; i < 2; i++) {
             const tusk = new THREE.Mesh(new THREE.ConeGeometry(0.05, 0.2, 4), new THREE.MeshStandardMaterial({ color: 0xf0e8d0 }));
-            tusk.position.set(1.0, 0.55, -0.15 + i * 0.3);
-            tusk.rotation.z = -0.5;
-            group.add(tusk);
+            tusk.position.set(1.0, 0.55, -0.15 + i * 0.3); tusk.rotation.z = -0.5; group.add(tusk);
         }
-        
-        // Kaki
         for (let i = 0; i < 4; i++) {
             const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.6, 5), brownMat);
             leg.position.set(-0.45 + (i % 2) * 0.9, 0.3, -0.3 + Math.floor(i / 2) * 0.6);
-            leg.castShadow = true;
-            group.add(leg);
+            leg.castShadow = true; group.add(leg);
         }
-        
         group.userData.isAnimal = true;
         group.userData.animalType = 'boar';
         return group;
@@ -1816,95 +1769,59 @@
         const group = new THREE.Group();
         const brownMat = new THREE.MeshStandardMaterial({ color: 0x7a5a2a, roughness: 0.9 });
         const whiteMat = new THREE.MeshStandardMaterial({ color: 0xf0e8d0 });
-        
         const body = new THREE.Mesh(new THREE.SphereGeometry(0.4, 10, 10), brownMat);
-        body.scale.set(1, 1.2, 1);
-        group.add(body);
-        
-        // Mata besar
+        body.scale.set(1, 1.2, 1); group.add(body);
         for (let i = 0; i < 2; i++) {
             const eye = new THREE.Mesh(new THREE.SphereGeometry(0.15, 8, 8), whiteMat);
-            eye.position.set(-0.15 + i * 0.3, 0.15, 0.32);
-            group.add(eye);
+            eye.position.set(-0.15 + i * 0.3, 0.15, 0.32); group.add(eye);
             const pupil = new THREE.Mesh(new THREE.SphereGeometry(0.07, 6, 6), new THREE.MeshBasicMaterial({ color: 0x000000 }));
-            pupil.position.set(-0.15 + i * 0.3, 0.15, 0.42);
-            group.add(pupil);
+            pupil.position.set(-0.15 + i * 0.3, 0.15, 0.42); group.add(pupil);
         }
-        
-        // Paruh
         const beak = new THREE.Mesh(new THREE.ConeGeometry(0.08, 0.2, 4), new THREE.MeshStandardMaterial({ color: 0xffaa33 }));
-        beak.position.set(0, -0.05, 0.4);
-        beak.rotation.x = Math.PI / 2;
-        group.add(beak);
-        
-        // Sayap
+        beak.position.set(0, -0.05, 0.4); beak.rotation.x = Math.PI / 2; group.add(beak);
         for (let i = 0; i < 2; i++) {
             const wing = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.6, 0.3), brownMat);
-            wing.position.set(-0.4 + i * 0.8, 0, 0);
-            group.add(wing);
+            wing.position.set(-0.4 + i * 0.8, 0, 0); group.add(wing);
         }
-        
         group.userData.isAnimal = true;
         group.userData.animalType = 'owl';
         return group;
     }
 
-    // ============================================================
-    // ✅ IKAN DI BAWAH AIR (bukan di atas)
-    // ============================================================
     function setupUnderwaterFish() {
         const colors = [0xff6b4a, 0xffaa44, 0x44aaff, 0xff88aa, 0x44ffaa, 0xffcc44];
         for (let i = 0; i < 25; i++) {
             const fishGroup = new THREE.Group();
             const color = colors[Math.floor(Math.random()*colors.length)];
             const fishMat = new THREE.MeshStandardMaterial({ color, roughness: 0.4, metalness: 0.3 });
-            
-            // Body
             const body = new THREE.Mesh(new THREE.SphereGeometry(0.35, 10, 8), fishMat);
-            body.scale.set(2, 0.8, 0.8);
-            fishGroup.add(body);
-            
-            // Tail
+            body.scale.set(2, 0.8, 0.8); fishGroup.add(body);
             const tail = new THREE.Mesh(new THREE.ConeGeometry(0.25, 0.5, 4), fishMat);
-            tail.rotation.z = Math.PI / 2;
-            tail.position.set(-0.6, 0, 0);
-            fishGroup.add(tail);
-            
-            // Eye
+            tail.rotation.z = Math.PI / 2; tail.position.set(-0.6, 0, 0); fishGroup.add(tail);
             const eye = new THREE.Mesh(new THREE.SphereGeometry(0.06, 6, 6), new THREE.MeshBasicMaterial({ color: 0x000000 }));
-            eye.position.set(0.4, 0.1, 0.15);
-            fishGroup.add(eye);
-            
-            // ✅ Posisi Y: DI BAWAH AIR (0.15-0.35, karena air di Y=0.5)
+            eye.position.set(0.4, 0.1, 0.15); fishGroup.add(eye);
             fishGroup.userData = {
                 angle: Math.random() * Math.PI * 2,
                 speed: 0.015 + Math.random() * 0.015,
                 radius: 3 + Math.random() * 8,
                 cx: (Math.random() - 0.5) * 100,
                 z: -12 + Math.random() * 24,
-                y: 0.15 + Math.random() * 0.2  // ✅ Di bawah air (0.15-0.35)
+                y: 0.15 + Math.random() * 0.2
             };
-            // Rotasi sedikit
             fishGroup.rotation.z = (Math.random() - 0.5) * 0.2;
             scene.add(fishGroup);
             fish.push(fishGroup);
         }
     }
 
-    // ============================================================
-    // ✅ NPC WORKERS (manusia yang bekerja otomatis)
-    // ============================================================
     function setupNPCWorkers() {
-        // Buat 5 NPC pekerja
         const npcCount = 5;
         for (let i = 0; i < npcCount; i++) {
             const worker = createWorker();
-            // Posisi awal di kota
             const x = -30 + Math.random() * 60;
             const z = CITY_Z_MIN + 10 + Math.random() * 40;
             worker.position.set(x, 0, z);
             scene.add(worker);
-            
             npcWorkers.push({
                 group: worker,
                 name: `Warga ${i + 1}`,
@@ -1921,63 +1838,31 @@
 
     function createWorker() {
         const group = new THREE.Group();
-        
-        // Warna baju acak
         const shirtColors = [0xe74c3c, 0x3498db, 0x2ecc71, 0xf39c12, 0x9b59b6, 0x1abc9c];
         const shirtColor = shirtColors[Math.floor(Math.random() * shirtColors.length)];
         const shirtMat = new THREE.MeshStandardMaterial({ color: shirtColor, roughness: 0.8 });
         const skinMat = new THREE.MeshStandardMaterial({ color: 0xf0c090, roughness: 0.9 });
         const pantsMat = new THREE.MeshStandardMaterial({ color: 0x2c3e50, roughness: 0.9 });
-        
-        // Badan
         const body = new THREE.Mesh(new THREE.BoxGeometry(0.7, 1, 0.4), shirtMat);
-        body.position.y = 1.3;
-        body.castShadow = true;
-        group.add(body);
-        
-        // Kepala
+        body.position.y = 1.3; body.castShadow = true; group.add(body);
         const head = new THREE.Mesh(new THREE.SphereGeometry(0.28, 10, 10), skinMat);
-        head.position.y = 2.1;
-        head.castShadow = true;
-        group.add(head);
-        
-        // Mata
+        head.position.y = 2.1; head.castShadow = true; group.add(head);
         for (let i = 0; i < 2; i++) {
             const eye = new THREE.Mesh(new THREE.SphereGeometry(0.04, 6, 6), new THREE.MeshBasicMaterial({ color: 0x000000 }));
-            eye.position.set(-0.1 + i * 0.2, 2.15, 0.25);
-            group.add(eye);
+            eye.position.set(-0.1 + i * 0.2, 2.15, 0.25); group.add(eye);
         }
-        
-        // Tangan (untuk animasi)
         const armL = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.9, 0.2), skinMat);
-        armL.position.set(-0.5, 1.3, 0);
-        armL.castShadow = true;
-        armL.userData.isLimb = true;
-        group.add(armL);
+        armL.position.set(-0.5, 1.3, 0); armL.castShadow = true; group.add(armL);
         group.userData.armL = armL;
-        
         const armR = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.9, 0.2), skinMat);
-        armR.position.set(0.5, 1.3, 0);
-        armR.castShadow = true;
-        armR.userData.isLimb = true;
-        group.add(armR);
+        armR.position.set(0.5, 1.3, 0); armR.castShadow = true; group.add(armR);
         group.userData.armR = armR;
-        
-        // Kaki
         const legL = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.9, 0.22), pantsMat);
-        legL.position.set(-0.18, 0.45, 0);
-        legL.castShadow = true;
-        legL.userData.isLimb = true;
-        group.add(legL);
+        legL.position.set(-0.18, 0.45, 0); legL.castShadow = true; group.add(legL);
         group.userData.legL = legL;
-        
         const legR = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.9, 0.22), pantsMat);
-        legR.position.set(0.18, 0.45, 0);
-        legR.castShadow = true;
-        legR.userData.isLimb = true;
-        group.add(legR);
+        legR.position.set(0.18, 0.45, 0); legR.castShadow = true; group.add(legR);
         group.userData.legR = legR;
-        
         group.userData.isNPC = true;
         return group;
     }
@@ -1993,29 +1878,18 @@
         }
     }
 
-    // ============================================================
-    // ✅ NPC BEHAVIOR LOGIC
-    // ============================================================
     function updateNPCs(dt) {
         if (!visualQuality.npc) return;
-        
         npcWorkers.forEach(worker => {
             worker.stateTimer -= dt;
-            
             if (worker.state === 'idle') {
-                // Cari aksi baru
-                if (worker.stateTimer <= 0) {
-                    decideNPCAction(worker);
-                }
-                // Idle animation
+                if (worker.stateTimer <= 0) decideNPCAction(worker);
                 worker.group.userData.armL.rotation.x = Math.sin(performance.now() / 500 + worker.walkPhase) * 0.1;
                 worker.group.userData.armR.rotation.x = Math.sin(performance.now() / 500 + worker.walkPhase + 1) * 0.1;
             } else if (worker.state === 'walking') {
-                // Bergerak ke target
                 const dx = worker.targetX - worker.group.position.x;
                 const dz = worker.targetZ - worker.group.position.z;
                 const dist = Math.sqrt(dx*dx + dz*dz);
-                
                 if (dist < 0.5) {
                     worker.state = 'working';
                     worker.stateTimer = 2 + Math.random() * 2;
@@ -2024,8 +1898,6 @@
                     worker.group.position.x += (dx / dist) * speed;
                     worker.group.position.z += (dz / dist) * speed;
                     worker.group.rotation.y = Math.atan2(dx, dz);
-                    
-                    // Walk animation
                     const walkCycle = performance.now() / 150;
                     worker.group.userData.legL.rotation.x = Math.sin(walkCycle) * 0.5;
                     worker.group.userData.legR.rotation.x = -Math.sin(walkCycle) * 0.5;
@@ -2034,14 +1906,10 @@
                     worker.group.position.y = Math.abs(Math.sin(walkCycle)) * 0.05;
                 }
             } else if (worker.state === 'working') {
-                // Animasi kerja
                 const workCycle = performance.now() / 200;
                 worker.group.userData.armL.rotation.x = -0.5 + Math.sin(workCycle) * 0.8;
                 worker.group.userData.armR.rotation.x = -0.5 + Math.sin(workCycle + 1) * 0.8;
-                
                 worker.actionProgress += dt;
-                
-                // Selesaikan aksi
                 if (worker.stateTimer <= 0) {
                     executeNPCAction(worker);
                     worker.state = 'idle';
@@ -2053,83 +1921,55 @@
     }
 
     function decideNPCAction(worker) {
-        // Cek kebijakan yang melindungi hutan
         const forestProtected = state.conservationLawActive || state.hasForestRangers || state.activePolicies.includes('public_education') || state.sustainableCity;
-        
-        // Kondisi kota
         const isUnhappy = state.happiness < 40;
         const isPoor = state.money < 50;
         const hasForest = treeMeshes.length > 30;
-        
-        // Probabilitas aksi
         let roll = Math.random();
-        
-        // Jika hutan dilindungi, NPC hanya bisa menanam & bangun
         if (forestProtected) {
             if (roll < 0.6) {
-                // Tanam pohon
                 worker.actionType = 'plant_tree';
                 const target = findForestPosition();
-                worker.targetX = target.x;
-                worker.targetZ = target.z;
+                worker.targetX = target.x; worker.targetZ = target.z;
                 worker.state = 'walking';
             } else if (roll < 0.9) {
-                // Bangun jembatan (jika ada uang)
                 if (state.money > 100 && state.bridgeCount < 1) {
                     worker.actionType = 'build_bridge';
                     worker.targetX = (Math.random() - 0.5) * 100;
                     worker.targetZ = 0;
                     worker.state = 'walking';
-                } else {
-                    worker.state = 'idle';
-                    worker.stateTimer = 3;
-                }
-            } else {
-                worker.state = 'idle';
-                worker.stateTimer = 2 + Math.random() * 3;
-            }
+                } else { worker.state = 'idle'; worker.stateTimer = 3; }
+            } else { worker.state = 'idle'; worker.stateTimer = 2 + Math.random() * 3; }
             return;
         }
-        
-        // Jika tidak dilindungi, NPC bisa menebang/membakar
         if (isUnhappy && hasForest && roll < 0.15) {
-            // Bakar hutan (jarang, hanya jika sangat tidak bahagia)
             worker.actionType = 'burn_forest';
             const target = findForestPosition();
-            worker.targetX = target.x;
-            worker.targetZ = target.z;
+            worker.targetX = target.x; worker.targetZ = target.z;
             worker.state = 'walking';
         } else if ((isPoor || isUnhappy) && hasForest && roll < 0.35) {
-            // Tebang pohon
             worker.actionType = 'cut_tree';
             const target = findForestPosition();
-            worker.targetX = target.x;
-            worker.targetZ = target.z;
+            worker.targetX = target.x; worker.targetZ = target.z;
             worker.state = 'walking';
         } else if (roll < 0.65) {
-            // Tanam pohon (kadang-kadang)
             worker.actionType = 'plant_tree';
             const target = findForestPosition();
-            worker.targetX = target.x;
-            worker.targetZ = target.z;
+            worker.targetX = target.x; worker.targetZ = target.z;
             worker.state = 'walking';
         } else if (roll < 0.8 && state.money > 100 && state.bridgeCount < 1) {
-            // Bangun jembatan
             worker.actionType = 'build_bridge';
             worker.targetX = (Math.random() - 0.5) * 100;
             worker.targetZ = 0;
             worker.state = 'walking';
-        } else {
-            worker.state = 'idle';
-            worker.stateTimer = 2 + Math.random() * 4;
-        }
+        } else { worker.state = 'idle'; worker.stateTimer = 2 + Math.random() * 4; }
     }
 
     function findForestPosition() {
         let x, z, attempts = 0;
         do {
             x = -110 + Math.random() * 220;
-            z = -120 + Math.random() * 90; // area hutan
+            z = -120 + Math.random() * 90;
             attempts++;
         } while (!isPositionFree(x, z, 6) && attempts < 20);
         return { x, z };
@@ -2138,7 +1978,6 @@
     function executeNPCAction(worker) {
         switch(worker.actionType) {
             case 'cut_tree':
-                // Cari pohon terdekat
                 let closestTree = null;
                 let minDist = Infinity;
                 treeMeshes.forEach(tree => {
@@ -2158,7 +1997,6 @@
                     showNotification(`🪓 Warga menebang pohon!`, 'npc');
                 }
                 break;
-                
             case 'plant_tree':
                 const pos = { x: worker.group.position.x + (Math.random() - 0.5) * 8, z: worker.group.position.z + (Math.random() - 0.5) * 8 };
                 if (isPositionFree(pos.x, pos.z, 4)) {
@@ -2169,13 +2007,11 @@
                     spawnSparklesAtRiver();
                 }
                 break;
-                
             case 'burn_forest':
                 if (!state.isFireActive && treeMeshes.length > 10) {
                     state.npcFiresStarted++;
                     logNPCActivity(`🔥 Warga MEMBAKAR HUTAN!`);
                     showNotification(`🔥 Warga membakar hutan!`, 'bad');
-                    // Perbesar kebakaran sedikit
                     const targetTree = treeMeshes[Math.floor(Math.random() * treeMeshes.length)];
                     if (targetTree) {
                         spawnFireAtTree(targetTree);
@@ -2186,7 +2022,6 @@
                     }
                 }
                 break;
-                
             case 'build_bridge':
                 buildBridgeAt(worker.group.position.x, 0);
                 state.npcBridgesBuilt++;
@@ -2196,39 +2031,23 @@
         }
     }
 
-    // ============================================================
-    // ✅ BUILD BRIDGE
-    // ============================================================
     function buildBridgeAt(x, z) {
         if (state.bridgeCount >= 1) return;
-        
         const group = new THREE.Group();
         const woodMat = new THREE.MeshStandardMaterial({ color: 0x8a5a2a, roughness: 0.9 });
         const metalMat = new THREE.MeshStandardMaterial({ color: 0x555566, metalness: 0.7, roughness: 0.5 });
-        
-        // Deck jembatan
         const deck = new THREE.Mesh(new THREE.BoxGeometry(4, 0.3, 20), woodMat);
-        deck.position.set(0, 1.2, 0);
-        deck.castShadow = true;
-        deck.receiveShadow = true;
-        group.add(deck);
-        
-        // Railing kiri-kanan
+        deck.position.set(0, 1.2, 0); deck.castShadow = true; deck.receiveShadow = true; group.add(deck);
         for (let side = -1; side <= 1; side += 2) {
             const railing = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.8, 20), metalMat);
-            railing.position.set(side * 2, 1.75, 0);
-            group.add(railing);
+            railing.position.set(side * 2, 1.75, 0); group.add(railing);
         }
-        
-        // Pilar penyangga
         for (let i = -1; i <= 1; i += 2) {
             for (let j = -1; j <= 1; j += 2) {
                 const pillar = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.25, 3, 8), metalMat);
-                pillar.position.set(i * 1.5, -0.3, j * 7);
-                group.add(pillar);
+                pillar.position.set(i * 1.5, -0.3, j * 7); group.add(pillar);
             }
         }
-        
         group.position.set(x, 0, z);
         group.userData.isBridge = true;
         scene.add(group);
@@ -2245,9 +2064,6 @@
         state.bridges.forEach(b => buildBridgeAt(b.x, 0));
     }
 
-    // ============================================================
-    // SETUP LAINNYA
-    // ============================================================
     function setupRain() {
         const rainCount = 3000;
         const rainGeo = new THREE.BufferGeometry();
@@ -2441,11 +2257,9 @@
             bird.add(new THREE.Mesh(new THREE.ConeGeometry(0.5, 2, 4), birdMat));
             bird.children[0].rotation.z = Math.PI / 2;
             const wingL = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.1, 0.6), birdMat);
-            wingL.position.set(0.5, 0, 0);
-            bird.add(wingL);
+            wingL.position.set(0.5, 0, 0); bird.add(wingL);
             const wingR = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.1, 0.6), birdMat);
-            wingR.position.set(-0.5, 0, 0);
-            bird.add(wingR);
+            wingR.position.set(-0.5, 0, 0); bird.add(wingR);
             bird.userData = { wingL, wingR, angle: Math.random() * Math.PI * 2, radius: 60 + Math.random() * 60, speed: 0.003 + Math.random() * 0.004, y: 40 + Math.random() * 15, flapPhase: Math.random() * Math.PI * 2 };
             scene.add(bird);
             birds.push(bird);
@@ -2458,11 +2272,9 @@
             const butterfly = new THREE.Group();
             const wingMat = new THREE.MeshBasicMaterial({ color: colors[Math.floor(Math.random()*colors.length)], side: THREE.DoubleSide, transparent: true, opacity: 0.9 });
             const wingL = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.5), wingMat);
-            wingL.position.set(0.4, 0, 0);
-            butterfly.add(wingL);
+            wingL.position.set(0.4, 0, 0); butterfly.add(wingL);
             const wingR = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.5), wingMat);
-            wingR.position.set(-0.4, 0, 0);
-            butterfly.add(wingR);
+            wingR.position.set(-0.4, 0, 0); butterfly.add(wingR);
             butterfly.userData = { wingL, wingR, cx: (Math.random() - 0.5) * 200, cz: (Math.random() - 0.5) * 200 - 50, angle: Math.random() * Math.PI * 2, radius: 3 + Math.random() * 6, speed: 0.02 + Math.random() * 0.03, y: 2 + Math.random() * 3, flapPhase: Math.random() * Math.PI * 2 };
             scene.add(butterfly);
             butterflies.push(butterfly);
@@ -2472,13 +2284,9 @@
     function setupFactory() {
         const group = new THREE.Group();
         const building = new THREE.Mesh(new THREE.BoxGeometry(18, 14, 12), new THREE.MeshStandardMaterial({ color:0x6a5a4a, roughness:0.8 }));
-        building.position.set(0, 7, 0);
-        building.castShadow = true;
-        group.add(building);
+        building.position.set(0, 7, 0); building.castShadow = true; group.add(building);
         const chimney = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 2, 12, 10), new THREE.MeshStandardMaterial({ color:0x4a3a2a }));
-        chimney.position.set(-5, 20, 0);
-        chimney.castShadow = true;
-        group.add(chimney);
+        chimney.position.set(-5, 20, 0); chimney.castShadow = true; group.add(chimney);
         group.position.set(-70, 0, 40);
         group.userData.isFactory = true;
         scene.add(group);
@@ -2570,7 +2378,6 @@
         scene.add(smokeParticles);
     }
 
-    // FARM ZONES & VISUALS
     function setupFarmZones() {
         createZoneMarker(FARM_ZONE, 0xa3e635);
         createZoneMarker(ORCHARD_ZONE, 0xfb923c);
@@ -2593,9 +2400,7 @@
     function createFarmPlot(x, z) {
         const group = new THREE.Group();
         const soil = new THREE.Mesh(new THREE.BoxGeometry(8, 0.3, 8), new THREE.MeshStandardMaterial({ color: 0x6a4a2a, roughness: 1 }));
-        soil.position.y = 0.15;
-        soil.receiveShadow = true;
-        group.add(soil);
+        soil.position.y = 0.15; soil.receiveShadow = true; group.add(soil);
         const cropMeshes = [];
         for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) {
             const crop = new THREE.Mesh(new THREE.ConeGeometry(0.15, 0.8 + Math.random() * 0.6, 5), new THREE.MeshStandardMaterial({ color: Math.random() < 0.5 ? 0xd4c44a : 0x5aa03a, roughness: 0.8 }));
@@ -2617,21 +2422,16 @@
     function createOrchard(x, z) {
         const group = new THREE.Group();
         const grass = new THREE.Mesh(new THREE.CylinderGeometry(6, 6, 0.2, 20), new THREE.MeshStandardMaterial({ color: 0x5a9a4a, roughness: 1 }));
-        grass.position.y = 0.1;
-        group.add(grass);
+        grass.position.y = 0.1; group.add(grass);
         const fruitMeshes = [];
         const treePositions = [[-2.5, -2.5], [2.5, -2.5], [-2.5, 2.5], [2.5, 2.5]];
         const fruitColors = [0xff6644, 0xffaa33, 0xdd3333, 0xff8844];
         treePositions.forEach((pos, idx) => {
             const treeGroup = new THREE.Group();
             const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.35, 2.5, 8), new THREE.MeshStandardMaterial({ color: 0x6a4a2a }));
-            trunk.position.y = 1.25;
-            trunk.castShadow = true;
-            treeGroup.add(trunk);
+            trunk.position.y = 1.25; trunk.castShadow = true; treeGroup.add(trunk);
             const foliage = new THREE.Mesh(new THREE.SphereGeometry(1.5, 10, 10), new THREE.MeshStandardMaterial({ color: 0x3a8a3a, roughness: 0.85 }));
-            foliage.position.y = 2.8;
-            foliage.castShadow = true;
-            treeGroup.add(foliage);
+            foliage.position.y = 2.8; foliage.castShadow = true; treeGroup.add(foliage);
             for (let i = 0; i < 5; i++) {
                 const fruit = new THREE.Mesh(new THREE.SphereGeometry(0.2, 8, 8), new THREE.MeshStandardMaterial({ color: fruitColors[idx], emissive: fruitColors[idx], emissiveIntensity: 0.2 }));
                 const angle = Math.random() * Math.PI * 2;
@@ -2654,28 +2454,22 @@
     function createFishPond(x, z) {
         const group = new THREE.Group();
         const ground = new THREE.Mesh(new THREE.CylinderGeometry(7, 7, 0.3, 24), new THREE.MeshStandardMaterial({ color: 0x8a7050, roughness: 1 }));
-        ground.position.y = 0.15;
-        ground.receiveShadow = true;
-        group.add(ground);
+        ground.position.y = 0.15; ground.receiveShadow = true; group.add(ground);
         const water = new THREE.Mesh(new THREE.CylinderGeometry(5.5, 5.5, 0.4, 32), new THREE.MeshStandardMaterial({ color: 0x2a7abf, roughness: 0.05, metalness: 0.7, transparent: true, opacity: 0.85, emissive: 0x0a3a6a, emissiveIntensity: 0.3 }));
-        water.position.y = 0.35;
-        group.add(water);
+        water.position.y = 0.35; group.add(water);
         const fishMeshes = [];
         for (let i = 0; i < 15; i++) {
             const fishGroup = new THREE.Group();
             const fishColor = [0xff8844, 0xffaa33, 0xdd6655, 0xffaa66][Math.floor(Math.random() * 4)];
             const fishMat = new THREE.MeshStandardMaterial({ color: fishColor, roughness: 0.5 });
             const body = new THREE.Mesh(new THREE.SphereGeometry(0.2, 10, 8), fishMat);
-            body.scale.set(1.8, 0.7, 0.7);
-            fishGroup.add(body);
+            body.scale.set(1.8, 0.7, 0.7); fishGroup.add(body);
             const tail = new THREE.Mesh(new THREE.ConeGeometry(0.15, 0.3, 4), fishMat);
-            tail.rotation.z = Math.PI / 2;
-            tail.position.set(-0.35, 0, 0);
-            fishGroup.add(tail);
+            tail.rotation.z = Math.PI / 2; tail.position.set(-0.35, 0, 0); fishGroup.add(tail);
             fishGroup.userData.angle = Math.random() * Math.PI * 2;
             fishGroup.userData.radius = 1 + Math.random() * 3.5;
             fishGroup.userData.speed = 0.02 + Math.random() * 0.03;
-            fishGroup.userData.y = 0.4 + Math.random() * 0.15;  // ✅ di bawah air kolam
+            fishGroup.userData.y = 0.4 + Math.random() * 0.15;
             group.add(fishGroup);
             fishMeshes.push(fishGroup);
         }
@@ -2730,7 +2524,6 @@
         return pond;
     }
 
-    // INTERAKSI
     function onCanvasClick(event) {
         if (!is3DInitialized || !raycaster) return;
         const rect = renderer.domElement.getBoundingClientRect();
@@ -2861,7 +2654,6 @@
         selectedObject = null;
     };
 
-    // VISUAL EFFECTS
     function spawnDebrisAt(pos) {
         const count = 15;
         const geo = new THREE.BufferGeometry();
@@ -3033,7 +2825,6 @@
         });
     }
 
-    // DISASTERS
     function startDisaster(disaster) {
         if (state.isDisasterActive || state.isFireActive) return;
         state.isDisasterActive = true;
@@ -3140,7 +2931,6 @@
         checkAchievements();
     }
 
-    // QUIZ
     let currentQuiz = null;
     function openQuiz() {
         if (isPaused) return;
@@ -3357,7 +3147,6 @@
             updateDayNight(dt);
             updateNPCs(dt);
             
-            // River waves
             if (riverMesh && riverMesh.userData.basePositions) {
                 const pos = riverMesh.geometry.attributes.position.array;
                 const base = riverMesh.userData.basePositions;
@@ -3367,7 +3156,6 @@
                 riverMesh.geometry.attributes.position.needsUpdate = true;
             }
             
-            // Farm animations
             farmPlots.forEach(farm => {
                 farm.cropMeshes.forEach(crop => {
                     crop.rotation.z = Math.sin(t * 2 + crop.userData.swayPhase) * 0.05;
@@ -3384,11 +3172,9 @@
                 if (pond.water) pond.water.position.y = 0.35 + Math.sin(t * 1.5) * 0.03;
             });
 
-            // ✅ Hewan hutan bergerak
             forestAnimals.forEach(animal => {
                 if (!visualQuality.animals) return;
                 if (animal.type === 'owl') {
-                    // Owl bobbing
                     animal.mesh.position.y = 6.5 + Math.sin(t * 1 + animal.phase) * 0.15;
                     animal.mesh.rotation.y = Math.sin(t * 0.3 + animal.phase) * 0.5;
                 } else {
@@ -3400,7 +3186,6 @@
                     animal.mesh.rotation.y = -animal.angle + Math.PI / 2;
                     
                     if (animal.type === 'rabbit') {
-                        // Rabbit hop
                         animal.mesh.position.y = Math.abs(Math.sin(t * 4 + animal.hopPhase)) * 0.2;
                     } else if (animal.type === 'deer') {
                         animal.mesh.position.y = Math.sin(t * 2 + animal.phase) * 0.05;
@@ -3507,12 +3292,10 @@
                 }
             });
 
-            // ✅ Ikan DI BAWAH AIR - tidak naik ke permukaan
             fish.forEach(f => {
                 f.userData.angle += f.userData.speed;
                 f.position.x = f.userData.cx + Math.cos(f.userData.angle) * f.userData.radius;
                 f.position.z = f.userData.z;
-                // Y tetap di bawah air (0.15-0.35)
                 f.position.y = f.userData.y + Math.sin(t * 2 + f.userData.angle) * 0.05;
                 f.rotation.y = -f.userData.angle + Math.PI / 2;
                 f.visible = !state.isDisasterActive || state.activeDisaster !== 'drought';
@@ -3577,7 +3360,6 @@
         updateWeatherVisuals();
     }
 
-    // UI
     function showPopulationChange(delta) {
         if (delta === 0) return;
         popupToast.textContent = delta > 0 ? `👥 +${delta} warga!` : `📉 ${Math.abs(delta)} warga pergi...`;
@@ -3852,9 +3634,7 @@
         renderFarmPanel();
     }
 
-    // ✅ RESET: Fungsi mereset world ke state awal
     function resetWorld() {
-        // Kembalikan semua state ke nilai awal
         state.bridgeCount = state.initialBridgeCount;
         state.money = state.initialMoney;
         state.wood = state.initialWood;
@@ -3865,24 +3645,16 @@
         state.population = state.initialPopulation;
         state.happiness = state.initialHappiness;
         state.researchPoints = state.initialResearchPoints;
-        
-        // Reset arrays dan collections
         state.bridges = [];
-        state.unlockedTechs = state.unlockedTechs.filter(t => t === 'solar_panels' || t === 'green_roofs'); // Hanya tech yang dimulai
-        state.activePolicies = []; // Reset kebijakan
-        state.achievements = []; // Reset pencapaian
-        
-        // Reset NPC
+        state.unlockedTechs = state.unlockedTechs.filter(t => t === 'solar_panels' || t === 'green_roofs');
+        state.activePolicies = [];
+        state.achievements = [];
         state.npcBridgesBuilt = 0;
         state.npcTreesCut = 0;
         state.npcTreesPlanted = 0;
         state.npcFiresStarted = 0;
-        
-        // Hapus jembatan dari 3D scene
         bridges.forEach(b => scene.remove(b));
         bridges.length = 0;
-        
-        // Update UI
         updateUI();
         showNotification('🌍 Dunia direset ke kondisi awal!', 'good');
     }
@@ -3903,7 +3675,6 @@
         if (e.key === ' ') { e.preventDefault(); $('btnPause').click(); }
     });
 
-    // GAME ACTIONS
     $('btnCollect').addEventListener('click', () => {
         if (isPaused) return;
         const mul = state.smartCity ? 2 : 1;
@@ -4065,7 +3836,6 @@
         $('btnPause').textContent = isPaused ? '▶️' : '⏸️';
     });
 
-    // PROCESS TURN
     function processTurn() {
         state.turn++;
         state.pollution = Math.min(100, state.pollution + GAME_CONFIG.pollutionPerTurn);
@@ -4088,7 +3858,6 @@
         if (state.activePolicies.includes('food_subsidy')) { state.food += 10; state.money = Math.max(0, state.money - 8); }
         if (state.activePolicies.includes('public_education')) state.happiness = Math.min(100, state.happiness + 3);
         if (state.activePolicies.includes('tree_planting_program')) {
-            // NPC tanam lebih banyak
             for (let i = 0; i < 3; i++) {
                 const x = (Math.random() - 0.5) * 260;
                 const z = -100 + Math.random() * 80;
@@ -4104,7 +3873,6 @@
             state.pollution = Math.min(100, state.pollution + 5);
             state.happiness = Math.max(10, state.happiness - 3);
             if (state.fireTurns <= 0) {
-                // Extinguish
                 state.isFireActive = false;
                 state.fireTurns = 0;
                 state.firesExtinguished++;
@@ -4116,7 +3884,6 @@
 
         processDisasterTurn();
 
-        // FARM PRODUCTION
         let foodProduction = state.farmCount * 3 + state.orchardCount * 2;
         state.money += state.orchardCount * 3;
         let fishProd = state.fishPondCount * 4;
@@ -4155,7 +3922,7 @@
         if (state.happiness > 70) growth *= 1.3;
         if (state.cleanWater > 10) growth *= 1.2;
         if (state.food > 100) growth *= 1.25;
-        if (state.bridgeCount > 0) growth *= 1.1; // ✅ Bonus dari jembatan
+        if (state.bridgeCount > 0) growth *= 1.1;
 
         let decline = 0;
         if (state.pollution > 60) decline += state.population * 0.04;
@@ -4189,7 +3956,6 @@
 
         if (state.turn % 5 === 0 && !state.isFireActive && !state.isDisasterActive) triggerDilemma();
 
-        // ✅ Environmental balance check
         state.treeCount = treeMeshes.length;
         if (treeMeshes.length < 20 && state.turn % 3 === 0) {
             showNotification('⚠️ Hutan menipis! Tanam pohon atau aktifkan perlindungan!', 'bad');
